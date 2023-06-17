@@ -1,4 +1,4 @@
-import { useState } from "react";
+// import { useState } from "react";
 import {Link} from "react-router-dom"
 
 const Index = (props) => {
@@ -7,9 +7,10 @@ const Index = (props) => {
   const loaded = () => {
     return props.plan.map((plan) => (
       <div key={plan._id} className="plan">
-        <Link to={`/plan/${plan._id}`}><h1>{plan.name}</h1></Link>
-        <img src={plan.image} alt={plan.name} />
-        <h3>{plan.title}</h3>
+        <Link to={`/plan/${plan._id}`}>
+          <h1>{plan.name}</h1></Link>
+        <h2>{plan.goal}</h2>
+        <h3>{plan.skills}</h3>
       </div>
     ));
   };
@@ -21,4 +22,3 @@ const Index = (props) => {
 }
 
 export default Index
-

@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
+import Index from '../pages/Index'
 
 const Header = (props) => {
   return (
-      <nav className='nav'>
-          <Link to="/">
-              <h1>Works</h1>
-          </Link>
-      </nav>
+      <div>
+              <div>Plan App</div>
+              <Index />
+      </div>
   );
 }
 

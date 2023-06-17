@@ -1,7 +1,8 @@
 import { React, useEffect, useState } from "react"
 import { Route, Routes } from 'react-router-dom'
-import Index from "../pages/Index"
+
 import Show from '../pages/Show'
+import Index from '../pages/Index'
 
 const Main = (props) => {
   const [plan, setPlan] = useState(null)
