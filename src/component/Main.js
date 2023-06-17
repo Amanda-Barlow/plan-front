@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { React, useEffect, useState } from "react"
 import { Route, Routes } from 'react-router-dom'
 import Index from "../pages/Index"
 import Show from '../pages/Show'
@@ -9,8 +9,8 @@ const Main = (props) => {
   const URL = 'http://localhost:4003/plan'
 
   const getPlan = async () => {
-    const reponse = await fetch(URL)
-    const data = await reponse.json()
+    const response = await fetch(URL)
+    const data = await response.json()
     setPlan(data.data)
   }
 
