@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 function Index(props) {
     const [newForm, setNewForm] = useState({
     name: "",
-    image: "",
-    title: "",
+    goal: "",
+    skills: "",
   });
 
   // handleChange function for form
@@ -19,8 +19,8 @@ function Index(props) {
     props.createPlan(newForm);
     setNewForm({
       name: "",
-      image: "",
-      title: "",
+      goal: "",
+      skills: "",
     });
   };
 
@@ -31,8 +31,8 @@ function Index(props) {
         <Link to={`/plan/${plan._id}`}>
           <h1>{plan.name}</h1>
         </Link>
-        <img src={plan.image} alt={plan.name} />
-        <h3>{plan.title}</h3>
+        <img src={plan.goal} alt={plan.name} />
+        <h3>{plan.skills}</h3>
       </div>
     ));
   };
@@ -44,24 +44,24 @@ function Index(props) {
     <section>
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="string"
           value={newForm.name}
           name="name"
           placeholder="name"
           onChange={handleChange}
         />
         <input
-          type="text"
+          type="string"
           value={newForm.image}
-          name="image"
-          placeholder="image URL"
+          name="gaol"
+          placeholder="goal"
           onChange={handleChange}
         />
         <input
-          type="text"
-          value={newForm.title}
-          name="title"
-          placeholder="title"
+          type="string"
+          value={newForm.skills}
+          name="skills"
+          placeholder="skills"
           onChange={handleChange}
         />
         <input type="submit" value="Create Plan" />

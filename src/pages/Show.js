@@ -31,31 +31,31 @@ const Show = (props) => {
   return(
       <div className="plan">
           <h1>{plan.name}</h1>
-          <h2>{plan.title}</h2>
-          <img src={plan.image} alt={plan.name} />
+          <h2>{plan.skills}</h2>
+          <h3>{plan.goal} alt={plan.name}</h3>
           <button id="delete" onClick={removePlan}>
           DELETE
           </button>
           <form onSubmit={handleSubmit}>
               <input
-                  type="text"
+                  type="string"
                   value={editForm.name}
                   name="name"
                   placeholder="name"
                   onChange={handleChange}
               />
               <input
-                  type="text"
-                  value={editForm.image}
-                  name="image"
-                  placeholder="image URL"
+                  type="string"
+                  value={editForm.goal}
+                  name="goal"
+                  placeholder="goal"
                   onChange={handleChange}
               />
               <input
-                  type="text"
-                  value={editForm.title}
-                  name="title"
-                  placeholder="title"
+                  type="string"
+                  value={editForm.skills}
+                  name="skills"
+                  placeholder="skills"
                   onChange={handleChange}
               />
               <input type="submit" value="Update Plan" />
