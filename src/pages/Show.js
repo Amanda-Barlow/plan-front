@@ -1,5 +1,4 @@
-
-import React, { useState } from "react";
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const Show = (props) => {
@@ -7,14 +6,11 @@ const Show = (props) => {
   const navigate = useNavigate();
   const id = params.id;
   const plans = props.plans;
-  const plan = plans ? plans.find((p) => p._id === id) : null;
+  const plan = plans.find((p) => p._id === id);
 
-  const [editForm, setEditForm] = useState(plan || {
-    name: "",
-    goal: "",
-    skills: "",
-  });
+  const [editForm, setEditForm] = useState(plan);
 
+  // handleChange function for form
   const handleChange = (event) => {
     setEditForm({ ...editForm, [event.target.name]: event.target.value });
   };
@@ -22,25 +18,20 @@ const Show = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     props.updatePlan(editForm, plan._id);
-
     navigate("/");
   };
 
-  const removePlan = (event) => {
-    event.preventDefault();
+  const removePlan = (e) => {
+    e.preventDefault();
     props.deletePlan(plan._id);
     navigate("/");
   };
 
-  if (!plan) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="plan">
       <h1>{plan.name}</h1>
-      <h2>{plan.skills}</h2>
-      <h3>{plan.goal}</h3>
+      <h2>{plan.title}</h2>
+      <img src={plan.image} alt={plan.name} />
       <button id="delete" onClick={removePlan}>
         DELETE
       </button>

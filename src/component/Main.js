@@ -1,21 +1,22 @@
-import { React, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Route, Routes } from 'react-router-dom'
-
+import Index from "../pages/Index"
 import Show from '../pages/Show'
-import Index from '../pages/Index'
 
 const Main = (props) => {
-  const [plan, setPlan] = useState(null)
+  const [plans, setPlans] = useState(null)
 
   const URL = 'http://localhost:4003/plan'
 
-  const getPlan = async () => {
+  //fetches all plans from our API backend
+  const getPlans = async () => {
     const response = await fetch(URL)
     const data = await response.json()
-    setPlan(data.data)
+    setPlans(data.data)
   }
 
   const createPlan = async (plan) => {
+    //make post request to create plan
     await fetch(URL, {
         method: "POST",
         headers: {
@@ -23,39 +24,44 @@ const Main = (props) => {
         },
         body: JSON.stringify(plan),
     })
-    getPlan()
+    // update our components list of plans
+    getPlans()
   }
 
   const updatePlan = async (plan, id) => {
-    await fetch(URL + id, {
+    // make post request to update plan
+    await fetch(URL + '/' + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(plan),
     });
-    getPlan();
+    // update list of plans
+    getPlans();
   };
   
   const deletePlan = async (id) => {
-    await fetch(URL + id, {
+    // make post request to delete plan
+    await fetch(URL + '/' + id, {
         method: "DELETE",
     });
-    getPlan();
+    // update list of plans
+    getPlans();
   };
 
   useEffect(() => {
-      getPlan()
+      getPlans()
   }, []);
 
   return (
     <main>
         <Routes>
             <Route path="/" element={<Index 
-                plan={plan} 
+                plans={plans} 
                 createPlan={createPlan}/>}/>
             <Route path="/plan/:id" element={<Show
-                plan={plan} 
+                plans={plans} 
                 updatePlan={updatePlan} 
                 deletePlan={deletePlan}
             />}/>
@@ -64,6 +70,4 @@ const Main = (props) => {
   )
 }
 
-export default Main
-
-
+export default Main;
