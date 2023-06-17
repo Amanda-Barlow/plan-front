@@ -5,7 +5,7 @@ function Index(props) {
     const [newForm, setNewForm] = useState({
     name: "",
     goal: "",
-    skills: "",
+    title: "",
   });
 
   // handleChange function for form
@@ -20,7 +20,7 @@ function Index(props) {
     setNewForm({
       name: "",
       goal: "",
-      skills: "",
+      title: "",
     });
   };
 
@@ -31,8 +31,8 @@ function Index(props) {
         <Link to={`/plan/${plan._id}`}>
           <h1>{plan.name}</h1>
         </Link>
-        <img src={plan.goal} alt={plan.name} />
-        <h3>{plan.skills}</h3>
+        <img src={plan.image} alt={plan.name} />
+        <h3>{plan.title}</h3>
       </div>
     ));
   };
@@ -44,24 +44,24 @@ function Index(props) {
     <section>
       <form onSubmit={handleSubmit}>
         <input
-          type="string"
+          type="text"
           value={newForm.name}
           name="name"
           placeholder="name"
           onChange={handleChange}
         />
         <input
-          type="string"
+          type="text"
           value={newForm.image}
-          name="gaol"
-          placeholder="goal"
+          name="image"
+          placeholder="image URL"
           onChange={handleChange}
         />
         <input
-          type="string"
-          value={newForm.skills}
-          name="skills"
-          placeholder="skills"
+          type="text"
+          value={newForm.title}
+          name="title"
+          placeholder="title"
           onChange={handleChange}
         />
         <input type="submit" value="Create Plan" />
