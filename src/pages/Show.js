@@ -29,9 +29,12 @@ const Show = (props) => {
 
   return (
     <div className="plan">
-      <h1>{plan.name}</h1>
-      <h2>{plan.title}</h2>
-      <img src={plan.image} alt={plan.name} />
+      <h2>Name: {plan.name}</h2>
+      <h2>Goal: {plan.goal}</h2>
+      <h2>Skills:  {plan.skills} </h2>
+      <h2>Frequency: {plan.frequency} Time Weekly</h2>
+      <h2>Coping Skills: {plan.coping}</h2>
+      <h2>Supportive Contacts: {plan.contacts}</h2>
       <button id="delete" onClick={removePlan}>
         DELETE
       </button>

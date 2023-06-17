@@ -3,7 +3,7 @@ import Index from '../pages/Index'
 const Header = (props) => {
   return (
       <div>
-              <div>Plan App</div>
+              <h1>Your Treatment, Your Plan</h1>
               <Index />
       </div>
   );

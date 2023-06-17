@@ -28,18 +28,18 @@ function Index(props) {
   // loaded function
   const loaded = () => {
     return props.plans.map((plan) => ( 
-      <div key={plan._id} className="plan"> 
-        <Link to={`/plan/${plan._id}`}> 
-          <h1>{plan.name}</h1> 
-        </Link>
-        <h2>{plan.skills}</h2> 
-        <h3>{plan.goal}</h3> 
+      <div key={plan._id} className="plan">
+        <Link to={`/plan/${plan._id}`}>
+          <h2>{plan.name}</h2> 
+        </Link>;
+        {/* <h2>{plan.skills}</h2> 
+        <h3>{plan.goal}</h3>  */}
       </div>
     ));
   };
 
   const loading = () => {
-    return <h1>Loading...</h1>;
+    return <h2>Let's Make Your Plan</h2>;
   };
   return (
     <section>
@@ -55,21 +55,42 @@ function Index(props) {
           type="text"
           value={newForm.goal}
           name="goal"
-          placeholder="goal"
+          placeholder="goals"
           onChange={handleChange}
         />
         <input
           type="text"
           value={newForm.skills} 
           name="skills" 
-          placeholder="skills" 
+          placeholder="current skills" 
           onChange={handleChange}
         />
-        <input type="submit" value="Create Plan" /> 
-      </form>
-      {props.plans ? loaded() : loading()} 
-    </section>
+        <input
+          type="text"
+          value={newForm.frequency} 
+          name="frequency" 
+          placeholder="frequency of meeting" 
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          value={newForm.coping} 
+          name="coping" 
+          placeholder="coping skills" 
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          value={newForm.contacts} 
+          name="contacts" 
+          placeholder="supportive contact" 
+          onChange={handleChange}
+        />
+ <input type="submit" value="Create Plan" /> 
+ </form>
+{props.plans ? loaded() : loading()} 
+</section>
   )
-}
+};
 
 export default Index;
